@@ -1,0 +1,140 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --font-sans: var(--app-font-sans);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+}
+
+:root {
+  --background: 0 0% 6%;
+  --foreground: 0 0% 95%;
+  --border: 0 0% 16%;
+  --input: 0 0% 13%;
+  --ring: 16 100% 60%;
+
+  --card: 0 0% 9%;
+  --card-foreground: 0 0% 95%;
+
+  --primary: 16 100% 60%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 0 0% 13%;
+  --secondary-foreground: 0 0% 90%;
+
+  --muted: 0 0% 11%;
+  --muted-foreground: 0 0% 50%;
+
+  --accent: 16 100% 60%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 84% 55%;
+  --destructive-foreground: 0 0% 100%;
+
+  --app-font-sans: 'Inter', system-ui, sans-serif;
+  --radius: 0.625rem;
+}
+
+@layer base {
+  * {
+    @apply border-border box-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@media print {
+  @page {
+    margin: 18mm 14mm;
+    size: A4;
+  }
+
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    font-size: 11pt;
+  }
+
+  nav,
+  [data-print-hide],
+  #history,
+  footer {
+    display: none !important;
+  }
+
+  #print-results {
+    display: block !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #print-results .bg-card,
+  #print-results .bg-background {
+    background: #fff !important;
+    border-color: #ddd !important;
+  }
+
+  #print-results .text-muted-foreground {
+    color: #555 !important;
+  }
+
+  #print-results .text-foreground,
+  #print-results h1,
+  #print-results h2,
+  #print-results h3,
+  #print-results p,
+  #print-results li,
+  #print-results span {
+    color: #111 !important;
+  }
+
+  #print-results .text-red-400 { color: #c0392b !important; }
+  #print-results .text-green-400 { color: #1e7e34 !important; }
+  #print-results .text-yellow-400 { color: #856404 !important; }
+  #print-results .text-primary { color: #e05a20 !important; }
+
+  #print-results [data-print-hide] {
+    display: none !important;
+  }
+
+  #print-results .checklist-panel,
+  #print-results .share-buttons {
+    display: none !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
